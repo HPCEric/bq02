@@ -4,7 +4,7 @@ session_start();
 
 class DB
 {
-    protected $dsn = "mysql:host=localhost;charset=utf8;dbname=db02",
+    protected $dsn = "mysql:host=localhost;charset=utf8;dbname=web02",
         $table,
         $pdo;
 
@@ -70,8 +70,8 @@ class DB
                 }
                 $sql .= " WHERE " . implode(" AND ", $tmp) . " " . $arg[1];
                 break;
-                return $this->pdo->query($sql)->fetchColumn();
         }
+        return $this->pdo->query($sql)->fetchColumn();
     }
     function save($array)
     {
@@ -115,4 +115,24 @@ function dd($array)
 function to($url)
 {
     header("location:" . $url);
+}
+
+
+$Log = new DB("log");
+$News = new DB("news");
+$Que = new DB("que");
+$User = new DB("user");
+$View = new DB("view");
+
+
+if (!isset($_SESSION['view'])) {
+    if ($View->math('count', '*', ['date' => date("Y-m-d")]) > 0) {
+        $view = $View->find(['date' => date("Y-m-d")]);
+        $view['total']++;
+        $View->save($view);
+        $_SESSION['view'] = $view['total'];
+    } else {
+        $View->save(['date' => date("Y-m-d"), 'total' => 1]);
+        $_SESSION['view'] = 1;
+    }
 }
