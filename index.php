@@ -9,9 +9,9 @@ include_once "base.php";
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 	<title>健康促進網</title>
-	<link href="./home_files/css.css" rel="stylesheet" type="text/css">
-	<script src="./home_files/jquery-1.9.1.min.js"></script>
-	<script src="./home_files/js.js"></script>
+	<link href="home_files/css.css" rel="stylesheet" type="text/css">
+	<script src="home_files/jquery-1.9.1.min.js"></script>
+	<script src="home_files/js.js"></script>
 </head>
 
 <body>
