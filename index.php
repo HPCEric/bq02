@@ -73,7 +73,7 @@ include_once "base.php";
 						if (file_exists($file)) {
 							include $file;
 						} else {
-							include "main.php";
+							include "front/main.php";
 						}
 						?>
 					</div>

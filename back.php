@@ -29,18 +29,41 @@ include_once "base.php";
 		</div>
 		<div id="mm">
 			<div class="hal" id="lef">
-				<a class="blo" href="?do=admin">帳號管理</a>
 				<a class="blo" href="?do=po">分類網誌</a>
-				<a class="blo" href="?do=news">最新文章管理</a>
-				<a class="blo" href="?do=know">講座管理</a>
-				<a class="blo" href="?do=que">問卷管理</a>
+				<a class="blo" href="?do=news">最新文章</a>
+				<a class="blo" href="?do=pop">人氣文章</a>
+				<a class="blo" href="?do=know">講座訊息</a>
+				<a class="blo" href="?do=que">問卷調查</a>
 			</div>
 			<div class="hal" id="main">
 				<div>
 
 					<marquee style="width:80%; display:inline-block;">請民眾踴躍投稿電子報</marquee>
 					<span style="width:18%; display:inline-block;">
-						<a href="?do=login">會員登入</a>
+
+						<?php
+						if (!isset($_SESSION['login'])) {
+						?>
+							<a href="?do=login">會員登入</a>
+							<?php
+						} else {
+							if ($_SESSION['login'] != 'admin') {
+							?>
+								<a href="?do=login">
+									歡迎，<?= $_SESSION['login']; ?>
+									<button onclick="logout()">登出</button>
+								</a>
+							<?php
+							} else {
+							?>
+								<a href="?do=login">
+									歡迎，<?= $_SESSION['login']; ?>
+									<button onclick="location.href='back.php'">管理</button>
+									<button onclick="logout()">登出</button>
+							<?php
+							}
+						}
+							?>
 					</span>
 					<div class="">
 						<!-- include -->
@@ -50,7 +73,7 @@ include_once "base.php";
 						if (file_exists($file)) {
 							include $file;
 						} else {
-							include "main.php";
+							include "back/main.php";
 						}
 						?>
 					</div>
