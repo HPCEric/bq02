@@ -19,3 +19,11 @@ function good(id,type,user)
 		}
 	})
 }
+
+// 登出
+
+function logout(){
+    $.get("api/logout.php",()=>{
+        location.reload();
+    })
+}
