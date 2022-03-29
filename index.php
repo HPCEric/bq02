@@ -12,6 +12,20 @@ include_once "base.php";
 	<link href="home_files/css.css" rel="stylesheet" type="text/css">
 	<script src="home_files/jquery-1.9.1.min.js"></script>
 	<script src="home_files/js.js"></script>
+
+	<style>
+	.pop{
+		background:rgba(51,51,51,0.8); 
+		color:#FFF; 
+		height:300px; 
+		width:300px; 
+		position:absolute; 
+		display:none; 
+		z-index:9999; 
+		overflow:auto;
+	}
+
+</style>
 </head>
 
 <body>
